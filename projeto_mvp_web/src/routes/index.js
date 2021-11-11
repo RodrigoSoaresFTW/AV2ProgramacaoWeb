@@ -14,12 +14,12 @@ const Routes = () =>{
     return (
         <BrowserRouter>
             <Switch>
-                <Route component={About} path="/about" />
-                <Route component={Chat} path="/chat" />
-                <Route component={Home} path="/" exact/>
-                <Route component={Home} path="/main" />
+                <Route component={About} path="/about" isPrivate/>
+                <Route component={Chat} path="/chat" isPrivate/>
+                <Route component={Home} path="/" exact isPrivate/>
+                <Route component={Home} path="/main" isPrivate/>
                 <Route component={Login} path="/login"/>
-                <Route component={Page404} path="*"/>
+                <Route component={Page404} path="*" isPrivate/>
             </Switch>
         </BrowserRouter>
     )
