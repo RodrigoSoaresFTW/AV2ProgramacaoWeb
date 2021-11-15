@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {UsuarioContext} from '../../contexts/user';
 import firebaseApp from '../../services/firebase';
 import {getFirestore, addDoc, collection, onSnapshot,query, where, orderBy} from 'firebase/firestore';
+import {Main} from './styles'
 
 let Chat = ()=>{
     const db = getFirestore(firebaseApp);
@@ -10,7 +11,6 @@ let Chat = ()=>{
 
     const {user, signOut} = useContext(UsuarioContext)
     
-
     useEffect(()=>{
        const unsub = onSnapshot(query(collection(db,"mensagens"),orderBy('data')),(querySnapshot)=>{
             const tmp = [];
@@ -19,9 +19,8 @@ let Chat = ()=>{
                 tmp.push({
                     id: document.id,
                     ...document.data()
-                })
-            })
-
+                });
+            });
             setMessages(tmp);
         });
         return ()=>{
@@ -32,39 +31,55 @@ let Chat = ()=>{
     const handleMessage = async()=>{
         let inputMensagens = document.getElementById('inputMensagem');
         let data = new Date()
-        try{
-           
+        try{           
             await addDoc(collection(db, 'mensagens'),{
                 mensagem: inputMensagens.value,
                 data: data,
+                idEmail: user.email
             }).then(()=>{
                 inputMensagens.value = inputMensagens.defaultValue;
             });
-            
         }catch(erro){
             console.log(erro);
         }
     }
 
     return (
-        <div>
-            <h1>Bem vindo {user?user.email : ''}</h1>
+        <Main>
+            <div class="main">
+                <nav class="navegacao">
+                    <ul class="navegacao-menu">
+                        <li class="navegacao-menu--item"><a href="/main">home</a></li>
+                        <li class="navegacao-menu--item"><a href="/chat">chat</a></li>
+                        <li class="navegacao-menu--item"><a href="/about">about</a></li>
+                    </ul>
 
-            {messages.map((item)=>(
-                <p key={item.id}>{item.mensagem}</p>
-            ))}
+                    <button type="button" class="button" id="btnLogout" onClick={()=>{
+                                signOut();
+                     }}>Sair</button>
+                </nav>
 
-            <input type="text" placeholder="Digite sua mensagem" id="inputMensagem"/>
+                <header>
+                    <h1>Bem vindo {user?user.email : ''}</h1>
+                </header>
 
-            <button type="button" onClick={()=>{
-                handleMessage();
-            }}>Enviar</button>
+                <section class="chat">
+                    <div class="chatBody">
+                        {messages.map((item)=>(
+                            <p key={item.id} class="chatContent">{item.idEmail} diz: {item.mensagem}</p>
+                        ))}
+                    </div>
 
-            <button type="button" onClick={()=>{
-                signOut();
-            }}>Sair</button>
+                    <div class="envioMensagem">
+                        <input type="text" placeholder="Digite sua mensagem" id="inputMensagem"/>
+                        <button type="button" id="btnEnviaMensagem" class="button" onClick={()=>{
+                            handleMessage();
+                        }}>Enviar</button>
+                    </div>
+                </section>
+            </div>
 
-        </div>
+        </Main>
     );
 }
 
