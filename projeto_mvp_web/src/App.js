@@ -3,13 +3,15 @@ import './App.css';
 import Routes from './routes';
 import React from 'react';
 import firebaseApp from './services/firebase';
+import GlobalStyle from './globalStyles';
 
 import {UsuarioProvider} from './contexts/user'
 
 function App() {
   return (
     <UsuarioProvider>
-     <Routes/>
+      <GlobalStyle/>
+      <Routes/>
     </UsuarioProvider>
   );
 }
