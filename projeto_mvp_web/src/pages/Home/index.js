@@ -9,8 +9,8 @@ let Home = ()=>{
             <Link to={{
                 pathname: "/about",
                 state:{
-                    nome: "Rodrigo",
-                    idade: 33
+                    nome: "",
+                    idade: ''
                 }
             }}>About </Link>
         </div>

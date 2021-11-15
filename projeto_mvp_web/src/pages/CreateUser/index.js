@@ -6,8 +6,8 @@ let Login = ()=>{
 
     const {signIn, signUp} = useContext(UsuarioContext);
     
-    const [email,setEmail] = useState('antonio@antonio.com');
-    const [password, setPassword] = useState('123123');
+    const email = useState('');
+    const password = useState('');
     
     const handleLogin = async()=>{
         try{

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createElement } from 'react'
 import {BrowserRouter, Switch} from 'react-router-dom';
 import Route from './Route';
 
@@ -7,6 +7,7 @@ import Chat  from '../pages/Chat';
 import Home from '../pages/Home';
 import Login from '../pages/Login'
 import Page404 from '../pages/Page404'
+import CreateUser from '../pages/CreateUser'
 
 
 

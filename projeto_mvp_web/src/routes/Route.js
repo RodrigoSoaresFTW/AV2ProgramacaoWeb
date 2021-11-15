@@ -20,6 +20,7 @@ const Route = ({
 
     if(!(isPrivate === !!user)){
         history.push(isPrivate? '/login':'/main');
+        
     }
 
     return(

@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {UsuarioContext} from '../../contexts/user';
 import firebaseApp from '../../services/firebase';
-import {getFirestore, addDoc, collection, onSnapshot,query, where} from 'firebase/firestore';
+import {getFirestore, addDoc, collection, onSnapshot,query, where, orderBy} from 'firebase/firestore';
 
 let Chat = ()=>{
     const db = getFirestore(firebaseApp);
@@ -9,10 +9,10 @@ let Chat = ()=>{
     const [messages, setMessages] = useState([]);
 
     const {user, signOut} = useContext(UsuarioContext)
-    console.log(user)
+    
 
     useEffect(()=>{
-       const unsub = onSnapshot(query(collection(db,"mensagens"),where('lido', '!=',"true")),(querySnapshot)=>{
+       const unsub = onSnapshot(query(collection(db,"mensagens"),orderBy('data')),(querySnapshot)=>{
             const tmp = [];
 
             querySnapshot.forEach(async(document)=>{
@@ -30,11 +30,17 @@ let Chat = ()=>{
     },[]);
     
     const handleMessage = async()=>{
+        let inputMensagens = document.getElementById('inputMensagem');
+        let data = new Date()
         try{
+           
             await addDoc(collection(db, 'mensagens'),{
-                mensagem: 'ola',
-                lido:'false'
-            })
+                mensagem: inputMensagens.value,
+                data: data,
+            }).then(()=>{
+                inputMensagens.value = inputMensagens.defaultValue;
+            });
+            
         }catch(erro){
             console.log(erro);
         }
@@ -42,11 +48,13 @@ let Chat = ()=>{
 
     return (
         <div>
-            <h1>Chat {user?user.email : ''}</h1>
+            <h1>Bem vindo {user?user.email : ''}</h1>
 
             {messages.map((item)=>(
-                <p key={item.id}>{item.id}</p>
+                <p key={item.id}>{item.mensagem}</p>
             ))}
+
+            <input type="text" placeholder="Digite sua mensagem" id="inputMensagem"/>
 
             <button type="button" onClick={()=>{
                 handleMessage();

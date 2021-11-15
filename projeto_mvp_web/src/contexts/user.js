@@ -12,6 +12,7 @@ const UsuarioContext = createContext({});
 
 const UsuarioProvider = ({children})=>{
 
+    
     const [user,setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -42,6 +43,7 @@ const UsuarioProvider = ({children})=>{
         createUserWithEmailAndPassword(auth, email, password).then(resp =>{
             console.log("Usuario Cadastrado");
         }).catch(err=>{
+            console.log("Erro ao Cadastrar")
             console.log(err)
         })
     }

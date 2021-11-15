@@ -10,11 +10,17 @@ let Login = ()=>{
 
     const {signIn, signUp} = useContext(UsuarioContext);
     
-    const [email,setEmail] = useState('antonio@antonio.com');
-    const [password, setPassword] = useState('123123');
+    
+    let email = useState('');
+    
+    
+    let password = useState('');
+    
     
     const handleLogin = async()=>{
         try{
+            email = document.querySelector("#emailLogin").value;
+            password = document.querySelector("#senhaLogin").value
             await signIn(email, password);
         }
         catch(erro){
@@ -24,6 +30,8 @@ let Login = ()=>{
 
     const handleCadastrar = async()=>{
         try{
+            email = document.querySelector("#emailLogin").value;
+            password = document.querySelector("#senhaLogin").value
             await signUp(email, password);
         }
         catch(erro){
@@ -62,17 +70,14 @@ let Login = ()=>{
                         </div>
 
                         <div class="box">
-                            <div class="title">
-                                Email
-                            </div>
-                            <input placeholder="Digite seu Email" type="text"/>
+                          
+                            <label for="emailLogin" class="title">Email</label>
+                            <input placeholder="Digite seu Email" type="text" id="emailLogin"/>
                         </div>
 
                         <div class="box">
-                            <div class="title">
-                                Senha
-                            </div>
-                            <input placeholder="Digite sua Senha" type="password"/>
+                            <label for="senhaLogin" class="title">Senha</label>
+                            <input placeholder="Digite sua Senha" type="password" id="senhaLogin"/>
                         </div>
 
                         <div class="forgotCredencials">
@@ -81,14 +86,14 @@ let Login = ()=>{
 
                         <div class="conteinerLoginOrJoin">
                          
+                             <button class="button invert" onClick={handleCadastrar} id="btnCadastrar">
+                                Cadastrar
+                            </button>
+                         
 
-                            <div class="button invert" onClick={handleCadastrar}>
-                                Cadastre-se
-                            </div>
-
-                            <div class="button" onClick={handleLogin}>
+                            <button class="button" onClick={handleLogin} id="btnLogin">
                                 Entrar
-                            </div>
+                            </button>
                         </div>
                     </div>
 
