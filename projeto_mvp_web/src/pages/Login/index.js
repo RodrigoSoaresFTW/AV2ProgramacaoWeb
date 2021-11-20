@@ -3,7 +3,7 @@ import React, {useContext, useState} from 'react';
 import {UsuarioContext} from '../../contexts/user'
 
 import {
-   Main, Content, Footer, Header,ContainerLogoFrase, ContainerSignIn,logo
+   Main, Content, Footer, Header,ContainerLogoFrase, ContainerSignIn
 } from './styles'
 
 let Login = ()=>{

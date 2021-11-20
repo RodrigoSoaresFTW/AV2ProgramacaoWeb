@@ -89,7 +89,6 @@ export const Main = styled.div`
         border-radius: 30px;
         width: 30vw;
         height: 44vw;
-        padding-bottom: 1rem;
     }
 
     .chatBody{
@@ -104,6 +103,12 @@ export const Main = styled.div`
         margin: 5px 0 10px 0;
         align-self: flex-end;
         
+    }
+
+    #btnEnviaMensagem:hover{
+        background-color: #3CB371;
+        transition: 1s;
+        color: white;
     }
 
     .button{
@@ -122,18 +127,18 @@ export const Main = styled.div`
 
     .envioMensagem{
         position: fixed;
-        top: 42vw;
+        top: 45vw;
     }
 
     @media screen and (max-width:800px){
         
-        .chatContent:nth-last-child(n+6){
+        .chatContent:nth-last-child(n+5){
         display: none;
         }
 
-        #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+        .envioMensagem{
+        position: fixed;
+        top: 45vw;
         }
 
         .chat{
@@ -141,47 +146,118 @@ export const Main = styled.div`
         }
     }
 
-    @media screen and (max-width:1000px){
+    @media screen and (max-width:900px){
         
-        .chatContent:nth-last-child(n+8){
+        .chatContent:nth-last-child(n+6){
         display: none;
         }
-
+        
         #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+            
+            width: 9rem;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .envioMensagem{
+            position: fixed;
+            top: 40vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+    }
+
+    @media screen and (max-width:960px){
+        
+        .chatContent:nth-last-child(n+8){
+            display: none;
+        }
+
+        .chatContent{
+            padding-left: 1rem;
         }
 
         .chat{
             margin-bottom: 1rem;
+        }
+    }
+
+    @media screen and (max-width:1030px){
+        
+        .bemvindo{
+            font-size: 1.5rem;
+        }
+
+        .chatContent:nth-last-child(n+10){
+            display: none;
+        }
+
+        .envioMensagem{
+            position: fixed;
+            top: 43vw;
+        }
+        
+
+        .chat{
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media screen and (max-width:1120px){
+        
+        .chatContent:nth-last-child(n+11){
+            display: none;
+        }
+
+        .envioMensagem{
+            position: fixed;
+        }
+    
+        .chat{
+            margin-bottom: 2rem;
         }
     }
 
     @media screen and (max-width:1170px){
         
-        .chatContent:nth-last-child(n+9){
-        display: none;
+        .chatContent:nth-last-child(n+12){
+            display: none;
+        }
+
+        .envioMensagem{
+            position: fixed;
+            top: 43vw;
+        }
+
+        #btnEnviaMensagem{
+            width: 3rem;
+            height: 1.5rem;
         }
 
         #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+            height: 1.5rem;
+            font-size: 0.8rem;
         }
-
+    
         .chat{
             margin-bottom: 1rem;
         }
+
+
     }
 
     @media screen and (max-width:1219px){
         
-        .chatContent:nth-last-child(n+11){
-        display: none;
+        .chatContent:nth-last-child(n+12){
+            display: none;
         }
 
-        #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+      
+        .envioMensagem{
+            position: fixed;
+            top: 43vw;
         }
 
         .chat{
@@ -189,16 +265,32 @@ export const Main = styled.div`
         }
     }
 
+    @media screen and (max-width:1280px){
+        
+        .chatContent:nth-last-child(n+13){
+            display: none;
+        }
+
+        .envioMensagem{
+            position: fixed;
+            top: 40vw;
+        }
+
+        .chat{
+            margin-bottom: 1rem;
+        }
+    }
 
     @media screen and (max-width:1350px){
         
-        .chatContent:nth-last-child(n+13){
-        display: none;
+        .chatContent:nth-last-child(n+14){
+            display: none;
         }
 
-        #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+
+        .envioMensagem{
+            position: fixed;
+            top: 43vw;
         }
 
         .chat{
@@ -210,12 +302,13 @@ export const Main = styled.div`
     @media screen and (max-width:1490px){
         
         .chatContent:nth-last-child(n+15){
-        display: none;
+            display: none;
         }
 
-        #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+    
+        .envioMensagem{
+            position: fixed;
+            top: 44vw;
         }
 
         .chat{
@@ -226,12 +319,7 @@ export const Main = styled.div`
     @media screen and (max-width:1560px){
         
         .chatContent:nth-last-child(n+17){
-        display: none;
-        }
-
-        #inputMensagem{
-            margin-top: 1rem;
-            margin-bottom: 0;
+            display: none;
         }
 
         .chat{
@@ -242,11 +330,10 @@ export const Main = styled.div`
     @media screen and (max-width:1700px){
         
         .chatContent:nth-last-child(n+18){
-        display: none;
+            display: none;
         }
 
         #inputMensagem{
-            margin-top: 1rem;
             margin-bottom: 0;
         }
 
@@ -258,11 +345,10 @@ export const Main = styled.div`
     @media screen and (max-width:1920px){
         
         .chatContent:nth-last-child(n+21){
-        display: none;
+             display: none;
         }
 
         #inputMensagem{
-            margin-top: 1rem;
             margin-bottom: 0;
         }
 

@@ -1,10 +1,16 @@
-import React,{useContext, useState, useEffect} from 'react';
+import React,{useContext} from 'react';
 import {Main} from './styles';
 import {UsuarioContext} from '../../contexts/user';
 
 
 let Home = ()=>{
-    const {user, signOut} = useContext(UsuarioContext)
+    const {user} = useContext(UsuarioContext)
+
+    let nome = user.email.split("@", 2);
+
+    nome = nome[0];
+
+    nome = nome.toUpperCase();
 
     return (
         <Main>
@@ -19,7 +25,7 @@ let Home = ()=>{
 
                 <section class="body">
                     <h1 class="titulo">
-                        Bem vindo {user.email}
+                        Bem vindo {nome}
                     </h1>
 
                     <article>
