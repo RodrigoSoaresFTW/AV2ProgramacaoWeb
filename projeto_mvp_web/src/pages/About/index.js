@@ -39,6 +39,9 @@ let About = ()=>{
                         <p class="conteudo">
                             Wellington Natanael de Souza - 2016202649
                         </p>
+                        <p class="conteudo">
+                            Vitor Machado do Espirito Santo - 2009100773
+                        </p>
                     </article>
                 </section>
             </div>
